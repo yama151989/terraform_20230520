@@ -1,3 +1,5 @@
 credentials
 /test/
 secret
+.terraform
+.terraform.lock.hcl
