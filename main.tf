@@ -3,7 +3,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~>3.0"
+      version = "~>4.0"
     }
   }
 }
@@ -14,11 +14,4 @@ provider "aws" {
   region  = "ap-northeast-1"
 }
 
-# 変数を2つ定義する。値は、「terraform.tfvars」で指定。
-variable "project" {
-  type = string
-}
 
-variable "environment" {
-  type = string
-}
