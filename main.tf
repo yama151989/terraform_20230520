@@ -1,4 +1,5 @@
 provider "aws" {
+    # AWSCLIの初期設定で指定したプロファイル。このIAMユーザーの情報で接続する。
     profile = "terraform"
     region = "ap-northeast-1"
 }
