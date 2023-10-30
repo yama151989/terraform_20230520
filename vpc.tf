@@ -11,6 +11,7 @@ resource "aws_vpc" "myvpc2" {
 resource "aws_subnet" "myvpc2-public-subnet-1a" {
   vpc_id     = aws_vpc.myvpc2.id
   cidr_block = "192.168.0.0/24"
+  availability_zone = "ap-northeast-1a"
 
   tags = {
     Name = "myvpc2-public-subnet-1a"
@@ -19,6 +20,7 @@ resource "aws_subnet" "myvpc2-public-subnet-1a" {
 resource "aws_subnet" "myvpc2-public-subnet-1c" {
   vpc_id     = aws_vpc.myvpc2.id
   cidr_block = "192.168.1.0/24"
+  availability_zone = "ap-northeast-1c"
 
   tags = {
     Name = "myvpc2-public-subnet-1c"
@@ -26,11 +28,11 @@ resource "aws_subnet" "myvpc2-public-subnet-1c" {
 }
 
 # インターネットゲートウェイ
-resource "aws_internet_gateway" "myvpc2-ig" {
+resource "aws_internet_gateway" "myvpc2-igw" {
   vpc_id = aws_vpc.myvpc2.id
 
   tags = {
-    Name = "myvpc2-ig"
+    Name = "myvpc2-igw"
   }
 }
 
@@ -40,7 +42,7 @@ resource "aws_route_table" "myvpc2-public-subnet-rt" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.myvpc2-ig.id
+    gateway_id = aws_internet_gateway.myvpc2-igw.id
   }
 }
 
